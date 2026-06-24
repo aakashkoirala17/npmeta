@@ -13,8 +13,9 @@ import CredentialsChecker from './components/CredentialsChecker';
 import DiffTool from './components/DiffTool';
 import InvisibleWatermark from './components/InvisibleWatermark';
 import BatchExifEditor from './components/BatchExifEditor';
+import AiDetector from './components/AiDetector';
 
-type ViewState = 'home' | 'how-it-works' | 'privacy' | 'resizer' | 'converter' | 'analyzer' | 'credentials' | 'diff' | 'watermark' | 'exif';
+type ViewState = 'home' | 'how-it-works' | 'privacy' | 'resizer' | 'converter' | 'analyzer' | 'credentials' | 'diff' | 'watermark' | 'exif' | 'aidetector';
 
 export default function App() {
   const [currentView, setCurrentView] = useState<ViewState>('home');
@@ -188,6 +189,7 @@ export default function App() {
                     <button onClick={() => navigateTo('diff')} style={{ display: 'block', width: '100%', textAlign: 'left', padding: '12px 24px', fontWeight: currentView === 'diff' ? 600 : 400, color: currentView === 'diff' ? 'var(--color-primary)' : 'var(--color-text-main)' }}>Image Diff Tool</button>
                     <button onClick={() => navigateTo('watermark')} style={{ display: 'block', width: '100%', textAlign: 'left', padding: '12px 24px', fontWeight: currentView === 'watermark' ? 600 : 400, color: currentView === 'watermark' ? 'var(--color-primary)' : 'var(--color-text-main)' }}>Invisible Watermark</button>
                     <button onClick={() => navigateTo('exif')} style={{ display: 'block', width: '100%', textAlign: 'left', padding: '12px 24px', fontWeight: currentView === 'exif' ? 600 : 400, color: currentView === 'exif' ? 'var(--color-primary)' : 'var(--color-text-main)' }}>Batch EXIF Editor</button>
+                    <button onClick={() => navigateTo('aidetector')} style={{ display: 'block', width: '100%', textAlign: 'left', padding: '12px 24px', fontWeight: currentView === 'aidetector' ? 600 : 400, color: currentView === 'aidetector' ? 'var(--color-primary)' : 'var(--color-text-main)' }}>AI Image Detector</button>
                   </div>
                 </div>
               )}
@@ -207,6 +209,7 @@ export default function App() {
       {currentView === 'diff' && <DiffTool />}
       {currentView === 'watermark' && <InvisibleWatermark />}
       {currentView === 'exif' && <BatchExifEditor />}
+      {currentView === 'aidetector' && <AiDetector />}
       
       {/* Footer */}
       <footer style={{ backgroundColor: '#ffffff', borderTop: '1px solid var(--color-border)', padding: '32px', textAlign: 'center', color: 'var(--color-text-muted)', marginTop: 'auto' }}>

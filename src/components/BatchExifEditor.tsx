@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import FileUploader from './FileUploader';
-import { Save, Edit3, Download } from 'lucide-react';
+import { Save, Download } from 'lucide-react';
 // @ts-ignore
 import piexif from 'piexifjs';
 
@@ -45,9 +45,9 @@ export default function BatchExifEditor() {
         const base64 = e.target?.result as string;
         const exifObj = { "0th": {}, "Exif": {}, "GPS": {}, "Interop": {}, "1st": {} };
         
-        if (artist) exifObj['0th'][piexif.ImageIFD.Artist] = artist;
-        if (copyright) exifObj['0th'][piexif.ImageIFD.Copyright] = copyright;
-        if (software) exifObj['0th'][piexif.ImageIFD.Software] = software;
+        if (artist) (exifObj['0th'] as any)[piexif.ImageIFD.Artist] = artist;
+        if (copyright) (exifObj['0th'] as any)[piexif.ImageIFD.Copyright] = copyright;
+        if (software) (exifObj['0th'] as any)[piexif.ImageIFD.Software] = software;
 
         const exifBytes = piexif.dump(exifObj);
         const newData = piexif.insert(exifBytes, base64);

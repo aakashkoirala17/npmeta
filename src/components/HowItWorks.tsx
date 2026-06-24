@@ -1,4 +1,3 @@
-import React from 'react';
 import { UploadCloud, Layers, Cpu, Download } from 'lucide-react';
 
 export default function HowItWorks() {

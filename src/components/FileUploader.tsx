@@ -1,4 +1,5 @@
-import React, { useRef, useState, DragEvent, ChangeEvent } from 'react';
+import { useRef, useState } from 'react';
+import type { DragEvent, ChangeEvent } from 'react';
 import { UploadCloud } from 'lucide-react';
 
 interface FileUploaderProps {

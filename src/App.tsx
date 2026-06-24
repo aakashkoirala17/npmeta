@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Image as ImageIcon, Download, Trash2, ShieldCheck, CheckCircle2, Zap, Lock, Menu, X } from 'lucide-react';
 import './index.css';
 

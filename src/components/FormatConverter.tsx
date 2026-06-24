@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import FileUploader from './FileUploader';
 import { Image as ImageIcon, Download, FileJson } from 'lucide-react';
 

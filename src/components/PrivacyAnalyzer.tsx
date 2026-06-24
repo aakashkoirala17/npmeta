@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import FileUploader from './FileUploader';
-import { ShieldAlert, AlertTriangle, CheckCircle, Search } from 'lucide-react';
+import { AlertTriangle, CheckCircle, Search } from 'lucide-react';
 import exifr from 'exifr';
 
 export default function PrivacyAnalyzer() {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import FileUploader from './FileUploader';
 import { SplitSquareHorizontal, Download } from 'lucide-react';
 
@@ -8,8 +8,7 @@ export default function DiffTool() {
   const [resultUrl, setResultUrl] = useState<string | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
 
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
+  
   const handleProcess = () => {
     if (!file1 || !file2) return;
     setIsProcessing(true);

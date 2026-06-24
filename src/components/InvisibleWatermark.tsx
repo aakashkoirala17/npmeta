@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import FileUploader from './FileUploader';
 import { EyeOff, Download, ScanText } from 'lucide-react';
 

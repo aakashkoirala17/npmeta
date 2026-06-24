@@ -95,8 +95,8 @@ export default function App() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '16px', backgroundColor: 'var(--color-bg)', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border)' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '16px', minWidth: 0, width: '100%' }}>
-                <ImageIcon size={32} color="var(--color-secondary)" />
-                <div>
+                <ImageIcon size={32} color="var(--color-secondary)" style={{ flexShrink: 0 }} />
+                <div style={{ minWidth: 0, flex: 1 }}>
                   <div className="truncate" style={{ fontWeight: 600 }}>{file.name}</div>
                   <div style={{ fontSize: '13px', color: 'var(--color-text-muted)' }}>{(file.size / 1024 / 1024).toFixed(2)} MB</div>
                 </div>

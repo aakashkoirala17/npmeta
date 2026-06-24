@@ -116,9 +116,9 @@ export default function AiDetector() {
           ) : result ? (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
               <div className="file-info-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '16px', backgroundColor: 'var(--color-bg)', borderRadius: 'var(--radius-md)', minWidth: 0 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '16px', minWidth: 0 }}>
-                  <img src={URL.createObjectURL(file)} alt="Preview" style={{ width: '64px', height: '64px', objectFit: 'cover', borderRadius: 'var(--radius-sm)' }} />
-                  <div style={{ minWidth: 0 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '16px', minWidth: 0, width: '100%' }}>
+                  <img src={URL.createObjectURL(file)} alt="Preview" style={{ width: '64px', height: '64px', objectFit: 'cover', borderRadius: 'var(--radius-sm)', flexShrink: 0 }} />
+                  <div style={{ minWidth: 0, flex: 1 }}>
                     <div className="truncate" style={{ fontWeight: 600 }}>{file.name}</div>
                     <div style={{ fontSize: '13px', color: 'var(--color-text-muted)' }}>{(file.size / 1024 / 1024).toFixed(2)} MB</div>
                   </div>

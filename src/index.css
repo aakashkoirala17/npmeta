@@ -59,3 +59,39 @@ a {
 .animate-spin {
   animation: spin 1s linear infinite;
 }
+
+/* Responsive Utilities */
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px !important;
+  }
+  .desktop-nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px !important;
+  }
+  main > div, .animate-fade-in > div {
+    padding: 16px !important;
+  }
+  h1 {
+    font-size: 28px !important;
+  }
+  .responsive-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .file-info-container {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 8px !important;
+  }
+}

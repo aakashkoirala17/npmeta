@@ -122,8 +122,8 @@ export default function InvisibleWatermark() {
           <FileUploader onFileSelect={setFile} subtitle={mode === 'decode' ? 'Upload a PNG image to read watermark' : 'Upload an image to embed text'} />
         ) : (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '16px', backgroundColor: 'var(--color-bg)', borderRadius: 'var(--radius-md)' }}>
-              <div style={{ fontWeight: 600 }}>{file.name}</div>
+            <div className="file-info-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '16px', backgroundColor: 'var(--color-bg)', borderRadius: 'var(--radius-md)', minWidth: 0 }}>
+              <div className="truncate" style={{ fontWeight: 600 }}>{file.name}</div>
               <button onClick={reset} style={{ color: 'var(--color-primary)' }}>Change</button>
             </div>
 

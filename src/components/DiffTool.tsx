@@ -104,7 +104,7 @@ export default function DiffTool() {
         
         {!resultUrl ? (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
+            <div className="responsive-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
               <div>
                 <h3 style={{ marginBottom: '12px', fontWeight: 600, color: 'var(--color-secondary)' }}>Image 1 (Base)</h3>
                 {!file1 ? <FileUploader onFileSelect={setFile1} title="Upload Base Image" subtitle="" /> : (

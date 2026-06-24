@@ -56,7 +56,7 @@ export default function CredentialsChecker() {
             ) : (
               <>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <h2 style={{ fontSize: '20px', fontWeight: 600 }}>C2PA Scan: {file.name}</h2>
+                  <h2 className="truncate" style={{ fontSize: '20px', fontWeight: 600, maxWidth: '100%' }}>C2PA Scan: {file.name}</h2>
                   <button onClick={() => setFile(null)} style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Scan Another</button>
                 </div>
 

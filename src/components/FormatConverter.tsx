@@ -57,10 +57,10 @@ export default function FormatConverter() {
           <FileUploader onFileSelect={setFile} />
         ) : (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '16px', padding: '16px', backgroundColor: 'var(--color-bg)', borderRadius: 'var(--radius-md)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '16px', padding: '16px', backgroundColor: 'var(--color-bg)', borderRadius: 'var(--radius-md)', minWidth: 0 }}>
               <ImageIcon size={32} color="var(--color-secondary)" />
               <div>
-                <div style={{ fontWeight: 600 }}>{file.name}</div>
+                <div className="truncate" style={{ fontWeight: 600 }}>{file.name}</div>
                 <div style={{ fontSize: '13px', color: 'var(--color-text-muted)' }}>{(file.size / 1024 / 1024).toFixed(2)} MB</div>
               </div>
             </div>

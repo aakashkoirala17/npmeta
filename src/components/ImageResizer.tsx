@@ -76,15 +76,15 @@ export default function ImageResizer() {
           <FileUploader onFileSelect={setFile} />
         ) : (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '16px', padding: '16px', backgroundColor: 'var(--color-bg)', borderRadius: 'var(--radius-md)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '16px', padding: '16px', backgroundColor: 'var(--color-bg)', borderRadius: 'var(--radius-md)', minWidth: 0 }}>
               <ImageIcon size={32} color="var(--color-secondary)" />
               <div>
-                <div style={{ fontWeight: 600 }}>{file.name}</div>
+                <div className="truncate" style={{ fontWeight: 600 }}>{file.name}</div>
                 <div style={{ fontSize: '13px', color: 'var(--color-text-muted)' }}>{dimensions.width}x{dimensions.height} px • {(file.size / 1024 / 1024).toFixed(2)} MB</div>
               </div>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
+            <div className="responsive-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
               <div>
                 <label style={{ display: 'block', marginBottom: '8px', fontWeight: 500 }}>Width (px)</label>
                 <input type="number" value={targetWidth} onChange={handleWidthChange} style={{ width: '100%', padding: '12px', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border)' }} />

@@ -77,8 +77,8 @@ export default function BatchExifEditor() {
           <FileUploader onFileSelect={setFile} accept="image/jpeg" />
         ) : (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '16px', backgroundColor: 'var(--color-bg)', borderRadius: 'var(--radius-md)' }}>
-              <div style={{ fontWeight: 600 }}>{file.name}</div>
+            <div className="file-info-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '16px', backgroundColor: 'var(--color-bg)', borderRadius: 'var(--radius-md)', minWidth: 0 }}>
+              <div className="truncate" style={{ fontWeight: 600 }}>{file.name}</div>
               <button onClick={() => { setFile(null); setResultUrl(null); }} style={{ color: 'var(--color-primary)' }}>Change</button>
             </div>
 

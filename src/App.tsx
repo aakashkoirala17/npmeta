@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Image as ImageIcon, Download, Trash2, ShieldCheck, CheckCircle2, Zap, Lock, Menu, X } from 'lucide-react';
+import { Image as ImageIcon, Download, Trash2, ShieldCheck, CheckCircle2, Zap, Lock, Menu, X, ChevronDown, ChevronUp } from 'lucide-react';
 import './index.css';
 
 // Components
@@ -17,9 +17,41 @@ import AiDetector from './components/AiDetector';
 
 type ViewState = 'home' | 'how-it-works' | 'privacy' | 'resizer' | 'converter' | 'analyzer' | 'credentials' | 'diff' | 'watermark' | 'exif' | 'aidetector';
 
+const faqItems = [
+  {
+    question: "How do I remove the 'Made with AI' label from my photos?",
+    answer: "Upload your image to npmeta and click 'Remove Metadata'. Our tool strips C2PA content credentials, XMP, and EXIF data that trigger the 'Made with AI' label on Instagram, Facebook, and other platforms. The entire process happens in your browser — your image is never uploaded to any server."
+  },
+  {
+    question: "What is C2PA metadata and why should I remove it?",
+    answer: "C2PA (Coalition for Content Provenance and Authenticity) is a standard that embeds content credentials into image files, including information about AI tools used to generate or edit the image. Social media platforms read this data to apply 'AI generated' labels. Removing C2PA metadata prevents these automatic labels from appearing on your posts."
+  },
+  {
+    question: "Can this tool remove invisible AI watermarks like SynthID?",
+    answer: "npmeta removes metadata-level AI tags (C2PA, XMP, EXIF). However, invisible pixel-embedded watermarks like Google SynthID are woven directly into the image pixels and cannot be removed by any metadata stripping tool. npmeta does modify pixel data during processing, which may partially disrupt some pixel-level watermarks."
+  },
+  {
+    question: "Is my image uploaded to any server?",
+    answer: "No. npmeta processes all images 100% client-side in your browser using HTML5 Canvas. Your files never leave your device. There are no uploads, no server processing, and no data collection. You can verify this by using the tool with your internet disconnected."
+  },
+  {
+    question: "Does removing metadata reduce image quality?",
+    answer: "There is minimal quality impact. npmeta re-encodes JPEG images at 92% quality (visually lossless) and preserves PNG images without compression artifacts. The visual difference is imperceptible to the human eye while ensuring all metadata and AI tags are completely stripped."
+  },
+  {
+    question: "What types of AI metadata does npmeta remove?",
+    answer: "npmeta removes C2PA content credentials, EXIF data (camera info, GPS location, timestamps), XMP metadata (including Adobe AI editing tags), IPTC data, AI generation parameters (prompts, seeds, model info), and software identification tags from tools like Midjourney, DALL-E, Stable Diffusion, and Adobe Firefly."
+  },
+  {
+    question: "Is npmeta free to use?",
+    answer: "Yes, npmeta is completely free to use with no account required. All tools including the AI metadata remover, image resizer, format converter, privacy analyzer, and batch EXIF editor are available at no cost."
+  }
+];
+
 export default function App() {
   const [currentView, setCurrentView] = useState<ViewState>('home');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
 
   // MetaCleaner (Home) State
   const [file, setFile] = useState<File | null>(null);
@@ -153,6 +185,95 @@ export default function App() {
           <p style={{ color: 'var(--color-text-muted)', fontSize: '14px' }}>Strips EXIF, GPS, C2PA, and fingerprints.</p>
         </div>
       </div>
+
+      {/* SEO Content: What is AI Metadata */}
+      <section style={{ marginTop: '72px', padding: '32px', backgroundColor: 'var(--color-surface)', borderRadius: 'var(--radius-lg)', border: '1px solid var(--color-border)' }}>
+        <h2 style={{ fontSize: '24px', fontWeight: 700, color: 'var(--color-secondary)', marginBottom: '16px' }}>
+          What is AI Metadata & Why Remove It?
+        </h2>
+        <p style={{ color: 'var(--color-text-muted)', lineHeight: 1.8, marginBottom: '16px' }}>
+          AI metadata includes hidden data embedded in image files by AI generation tools like Midjourney, DALL-E, Stable Diffusion, and Adobe Firefly. This metadata — stored as <strong>C2PA content credentials</strong>, <strong>XMP tags</strong>, and <strong>EXIF data</strong> — contains information about the AI model used, generation parameters, prompts, and editing history.
+        </p>
+        <p style={{ color: 'var(--color-text-muted)', lineHeight: 1.8, marginBottom: '16px' }}>
+          Social media platforms like <strong>Instagram</strong>, <strong>Facebook</strong>, and <strong>LinkedIn</strong> automatically scan uploaded images for this metadata and apply <strong>"Made with AI"</strong> or <strong>"AI Info"</strong> labels. Even images that were only lightly edited with AI-powered tools (like Photoshop's Generative Fill) can get flagged.
+        </p>
+        <p style={{ color: 'var(--color-text-muted)', lineHeight: 1.8 }}>
+          npmeta lets you <strong>remove AI metadata</strong> entirely — stripping C2PA credentials, EXIF data, GPS location, XMP tags, and AI generation parameters — so you have full control over your image's privacy and presentation.
+        </p>
+      </section>
+
+      {/* SEO Content: How to Remove AI Info */}
+      <section style={{ marginTop: '32px', padding: '32px', backgroundColor: 'var(--color-surface)', borderRadius: 'var(--radius-lg)', border: '1px solid var(--color-border)' }}>
+        <h2 style={{ fontSize: '24px', fontWeight: 700, color: 'var(--color-secondary)', marginBottom: '24px' }}>
+          How to Remove AI Info from Your Photos
+        </h2>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          {[
+            { step: '1', title: 'Upload Your Image', desc: 'Drag & drop or click to select any JPEG, PNG, or WebP image. Your file stays on your device — nothing is uploaded.' },
+            { step: '2', title: 'Click "Remove Metadata"', desc: 'npmeta strips all AI tags, C2PA content credentials, EXIF data, GPS coordinates, XMP metadata, and software identification.' },
+            { step: '3', title: 'Download Your Clean Image', desc: 'Get a metadata-free image ready to share on Instagram, Facebook, Twitter, or any platform without triggering AI labels.' }
+          ].map((item) => (
+            <div key={item.step} style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
+              <div style={{ 
+                width: '36px', height: '36px', borderRadius: '50%', 
+                backgroundColor: 'var(--color-primary)', color: 'white',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                fontWeight: 700, fontSize: '16px', flexShrink: 0
+              }}>
+                {item.step}
+              </div>
+              <div>
+                <h3 style={{ fontWeight: 600, fontSize: '16px', color: 'var(--color-secondary)', marginBottom: '4px' }}>{item.title}</h3>
+                <p style={{ color: 'var(--color-text-muted)', fontSize: '14px', lineHeight: 1.6 }}>{item.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* SEO Content: FAQ Section */}
+      <section style={{ marginTop: '32px', marginBottom: '32px' }}>
+        <h2 style={{ fontSize: '24px', fontWeight: 700, color: 'var(--color-secondary)', marginBottom: '24px' }}>
+          Frequently Asked Questions
+        </h2>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+          {faqItems.map((item, index) => (
+            <div 
+              key={index}
+              style={{ 
+                backgroundColor: 'var(--color-surface)', 
+                borderRadius: 'var(--radius-md)', 
+                border: '1px solid var(--color-border)',
+                overflow: 'hidden',
+                transition: 'box-shadow 0.2s ease'
+              }}
+            >
+              <button
+                onClick={() => setExpandedFaq(expandedFaq === index ? null : index)}
+                style={{
+                  width: '100%', textAlign: 'left', padding: '20px 24px',
+                  display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                  gap: '16px', fontWeight: 600, fontSize: '15px',
+                  color: expandedFaq === index ? 'var(--color-primary)' : 'var(--color-secondary)',
+                  transition: 'color 0.2s ease'
+                }}
+              >
+                <span>{item.question}</span>
+                {expandedFaq === index ? <ChevronUp size={20} style={{ flexShrink: 0 }} /> : <ChevronDown size={20} style={{ flexShrink: 0 }} />}
+              </button>
+              {expandedFaq === index && (
+                <div style={{ 
+                  padding: '0 24px 20px 24px',
+                  color: 'var(--color-text-muted)', fontSize: '14px', lineHeight: 1.8,
+                  animation: 'fadeIn 0.2s ease-out'
+                }}>
+                  {item.answer}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </section>
     </main>
   );
 

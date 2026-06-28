@@ -6,6 +6,7 @@ export default function DocConverter() {
   const [file, setFile] = useState<File | null>(null);
   const [status, setStatus] = useState<'idle' | 'converting' | 'done' | 'error'>('idle');
   const [targetFormat, setTargetFormat] = useState<'pdf' | 'docx'>('pdf');
+  const [resultUrl, setResultUrl] = useState<string | null>(null);
 
   const handleFileSelect = (selectedFile: File) => {
     setFile(selectedFile);
@@ -21,17 +22,43 @@ export default function DocConverter() {
   const convertDocument = async () => {
     if (!file) return;
     setStatus('converting');
+    setResultUrl(null);
 
-    // Simulate Server-Side API Call
-    // In production, this would be an API call to a Vercel Serverless Function
-    // e.g., fetch('/api/convert', { method: 'POST', body: formData })
     try {
-      await new Promise(resolve => setTimeout(resolve, 3000));
+      // 1. Request upload URL and create job
+      const createRes = await fetch('/api/convert', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ targetFormat, filename: file.name })
+      });
+      const { jobId, uploadUrl, uploadParameters, error } = await createRes.json();
+      
+      if (error) throw new Error(error);
+
+      // 2. Upload file directly to CloudConvert storage
+      const formData = new FormData();
+      for (const key in uploadParameters) {
+        formData.append(key, uploadParameters[key]);
+      }
+      formData.append('file', file);
+      
+      const uploadRes = await fetch(uploadUrl, {
+        method: 'POST',
+        body: formData
+      });
+      if (!uploadRes.ok) throw new Error('Failed to upload file');
+
+      // 3. Wait for conversion to finish
+      const waitRes = await fetch(`/api/convert?jobId=${jobId}`);
+      const waitData = await waitRes.json();
+      
+      if (waitData.error) throw new Error(waitData.error);
+      
+      setResultUrl(waitData.url);
       setStatus('done');
-      // For demonstration, we just show a fake download button 
-      // since we don't have a real API key configured yet.
     } catch (error) {
       console.error(error);
+      alert('Conversion failed. Check console or API key.');
       setStatus('error');
     }
   };
@@ -95,15 +122,15 @@ export default function DocConverter() {
               </div>
             )}
 
-            {status === 'done' && (
+            {status === 'done' && resultUrl && (
               <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px', color: '#059669', backgroundColor: '#ecfdf5', padding: '16px', borderRadius: 'var(--radius-md)', fontWeight: 500 }}>
-                  <CheckCircle2 size={24} /> Conversion successful! (Demo Mode)
+                  <CheckCircle2 size={24} /> Conversion successful!
                 </div>
                 <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
-                  <button onClick={() => alert('API Integration required for download.')} style={{ backgroundColor: 'var(--color-secondary)', color: 'white', padding: '16px 24px', borderRadius: 'var(--radius-md)', fontWeight: 600, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', flex: 1, minWidth: '200px', border: 'none', cursor: 'pointer' }}>
+                  <a href={resultUrl} download={`converted.${targetFormat}`} style={{ backgroundColor: 'var(--color-secondary)', color: 'white', padding: '16px 24px', borderRadius: 'var(--radius-md)', fontWeight: 600, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', flex: 1, minWidth: '200px', textDecoration: 'none' }}>
                     <FileDown size={20} /> Download {targetFormat.toUpperCase()}
-                  </button>
+                  </a>
                   <button onClick={() => setFile(null)} style={{ padding: '16px 24px', borderRadius: 'var(--radius-md)', fontWeight: 600, border: '1px solid var(--color-border)', flex: 1, minWidth: '200px', backgroundColor: 'transparent', cursor: 'pointer' }}>Convert Another</button>
                 </div>
               </div>

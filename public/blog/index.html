@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>npmeta Privacy Blog | Guides on EXIF & AI Metadata Removal</title>
+  <meta name="description" content="Read the latest articles, guides, and best practices on how to protect your digital privacy by removing EXIF and AI metadata from your images.">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-bg: #f9fafb;
+      --color-surface: #ffffff;
+      --color-text: #111827;
+      --color-text-muted: #4b5563;
+      --color-primary: #3b82f6;
+      --color-border: #e5e7eb;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --color-bg: #111827;
+        --color-surface: #1f2937;
+        --color-text: #f9fafb;
+        --color-text-muted: #9ca3af;
+        --color-border: #374151;
+      }
+    }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, sans-serif;
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+    }
+    .header {
+      background-color: var(--color-surface);
+      border-bottom: 1px solid var(--color-border);
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: 800;
+      text-decoration: none;
+      color: var(--color-text);
+    }
+    .nav-links a {
+      color: var(--color-text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      margin-left: 20px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 60px auto;
+      padding: 0 24px;
+    }
+    .blog-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .blog-header h1 {
+      font-size: 42px;
+      margin-bottom: 16px;
+      font-weight: 800;
+    }
+    .blog-header p {
+      font-size: 18px;
+      color: var(--color-text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .article-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .article-card {
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 24px;
+      text-decoration: none;
+      color: inherit;
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+    .article-card:hover {
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      transform: translateY(-2px);
+      border-color: var(--color-primary);
+    }
+    .article-card h2 {
+      font-size: 22px;
+      margin: 0 0 8px 0;
+      color: var(--color-primary);
+    }
+    .article-card p {
+      margin: 0;
+      color: var(--color-text-muted);
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <a href="/" class="logo">npmeta</a>
+    <nav class="nav-links">
+      <a href="/blog/">Blog</a>
+      <a href="/">Tools</a>
+    </nav>
+  </header>
+  <main class="container">
+    <div class="blog-header">
+      <h1>The npmeta Privacy Blog</h1>
+      <p>Guides, best practices, and insights on managing image metadata, protecting your privacy, and navigating AI content credentials.</p>
+    </div>
+    
+    <div class="article-list">
+      <a href="/blog/top-features-of-npmeta-that-make-metadata-cleaning-easy.html" class="article-card">
+        <h2>Top Features of npmeta That Make Metadata Cleaning Easy</h2>
+        <p>Discover how npmeta simplifies image privacy. Explore our top features like 100% client-side processing and instant EXIF removal.</p>
+      </a>
+      
+      <a href="/blog/the-benefits-of-stripping-metadata-for-freelance-photographers.html" class="article-card">
+        <h2>The Benefits of Stripping Metadata for Freelance Photographers</h2>
+        <p>Learn why freelance photographers must strip metadata from their images to protect clients and secure exclusive locations.</p>
+      </a>
+      
+      <a href="/blog/simplify-image-privacy-with-npmeta-instant-metadata-removal-solution.html" class="article-card">
+        <h2>Simplify Image Privacy with npmeta’s Instant Metadata Removal Solution</h2>
+        <p>Discover how npmeta provides the easiest and most secure instant metadata removal solution directly in your browser.</p>
+      </a>
+      
+      <a href="/blog/how-to-remove-ai-metadata-from-your-images-a-step-by-step-guide.html" class="article-card">
+        <h2>How to Remove AI Metadata from Your Images: A Step-by-Step Guide</h2>
+        <p>Learn how to easily remove AI metadata, C2PA content credentials, and EXIF tags from your images using npmeta.</p>
+      </a>
+      
+      <a href="/blog/understanding-c2pa-content-credentials-and-privacy-risks.html" class="article-card">
+        <h2>Understanding C2PA Content Credentials and Privacy Risks</h2>
+        <p>Learn what C2PA content credentials are, how they track the provenance of AI images, and the potential privacy risks for creators.</p>
+      </a>
+      
+      <a href="/blog/how-to-use-npmeta-for-batch-metadata-cleanup-and-why-it-matters.html" class="article-card">
+        <h2>How to Use npmeta for Batch Metadata Cleanup and Why It Matters</h2>
+        <p>Discover why batch metadata cleanup is essential for photographers and web developers managing hundreds of assets.</p>
+      </a>
+      
+      <a href="/blog/why-protect-your-privacy-by-removing-image-metadata.html" class="article-card">
+        <h2>Why Protect Your Privacy by Removing Image Metadata</h2>
+        <p>Understand the severe privacy risks hidden in your image files and learn why removing image metadata is a necessary step.</p>
+      </a>
+      
+      <a href="/blog/best-practices-for-managing-ai-generated-image-data.html" class="article-card">
+        <h2>Best Practices for Managing AI-Generated Image Data</h2>
+        <p>Explore best practices for managing and cleaning AI-generated image data and C2PA credentials to maintain control over your content.</p>
+      </a>
+      
+      <a href="/blog/protect-your-content-the-importance-of-metadata-management-for-creators.html" class="article-card">
+        <h2>Protect Your Content: The Importance of Metadata Management for Creators</h2>
+        <p>Learn why content creators must manage their image metadata to protect their intellectual property and avoid algorithmic labels.</p>
+      </a>
+      
+      <a href="/blog/comparing-popular-metadata-removal-tools-which-is-best-for-you.html" class="article-card">
+        <h2>Comparing Popular Metadata Removal Tools: Which Is Best for You?</h2>
+        <p>Compare the best EXIF and AI metadata removal tools on the market. Find out why client-side processing makes npmeta the top choice.</p>
+      </a>
+    </div>
+  </main>
+</body>
+</html>

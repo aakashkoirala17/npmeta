@@ -19,32 +19,16 @@ type ViewState = 'home' | 'how-it-works' | 'privacy' | 'resizer' | 'converter' |
 
 const faqItems = [
   {
-    question: "How do I remove the 'Made with AI' label from my photos?",
-    answer: "Upload your image to npmeta and click 'Remove Metadata'. Our tool strips C2PA content credentials, XMP, and EXIF data that trigger the 'Made with AI' label on Instagram, Facebook, and other platforms. The entire process happens in your browser — your image is never uploaded to any server."
+    question: "What is AI metadata?",
+    answer: "AI metadata includes hidden data embedded in image files by AI generation tools (like Midjourney or DALL-E) or editing software. This data is stored as C2PA content credentials, EXIF data, or XMP tags, and can trigger automatic 'Made with AI' labels on social media."
   },
   {
-    question: "What is C2PA metadata and why should I remove it?",
-    answer: "C2PA (Coalition for Content Provenance and Authenticity) is a standard that embeds content credentials into image files, including information about AI tools used to generate or edit the image. Social media platforms read this data to apply 'AI generated' labels. Removing C2PA metadata prevents these automatic labels from appearing on your posts."
+    question: "How do I remove AI data from an image?",
+    answer: "Simply select your image in our free AI info remover. Click the 'Remove Metadata' button, and our tool will instantly clean image metadata, stripping all C2PA, EXIF, and XMP data from your image right in your browser."
   },
   {
-    question: "Can this tool remove invisible AI watermarks like SynthID?",
-    answer: "npmeta removes metadata-level AI tags (C2PA, XMP, EXIF). However, invisible pixel-embedded watermarks like Google SynthID are woven directly into the image pixels and cannot be removed by any metadata stripping tool. npmeta does modify pixel data during processing, which may partially disrupt some pixel-level watermarks."
-  },
-  {
-    question: "Is my image uploaded to any server?",
-    answer: "No. npmeta processes all images 100% client-side in your browser using HTML5 Canvas. Your files never leave your device. There are no uploads, no server processing, and no data collection. You can verify this by using the tool with your internet disconnected."
-  },
-  {
-    question: "Does removing metadata reduce image quality?",
-    answer: "There is minimal quality impact. npmeta re-encodes JPEG images at 92% quality (visually lossless) and preserves PNG images without compression artifacts. The visual difference is imperceptible to the human eye while ensuring all metadata and AI tags are completely stripped."
-  },
-  {
-    question: "What types of AI metadata does npmeta remove?",
-    answer: "npmeta removes C2PA content credentials, EXIF data (camera info, GPS location, timestamps), XMP metadata (including Adobe AI editing tags), IPTC data, AI generation parameters (prompts, seeds, model info), and software identification tags from tools like Midjourney, DALL-E, Stable Diffusion, and Adobe Firefly."
-  },
-  {
-    question: "Is npmeta free to use?",
-    answer: "Yes, npmeta is completely free to use with no account required. All tools including the AI metadata remover, image resizer, format converter, privacy analyzer, and batch EXIF editor are available at no cost."
+    question: "Is it safe to upload my photos here?",
+    answer: "Yes, because there is NO upload! All processing is 100% client-side. Your photos are cleaned locally on your device and never sent to any servers, ensuring total privacy."
   }
 ];
 
@@ -109,11 +93,11 @@ export default function App() {
     <main style={{ flex: 1, padding: '48px 24px', maxWidth: '900px', margin: '0 auto', width: '100%' }}>
       <div style={{ textAlign: 'center', marginBottom: '48px' }} className="animate-fade-in">
         <h1 style={{ fontSize: '42px', fontWeight: 800, color: 'var(--color-secondary)', marginBottom: '16px', lineHeight: 1.2 }}>
-          Remove AI Tags & Metadata <br/>
-          <span style={{ color: 'var(--color-primary)' }}>Instantly. Securely.</span>
+          Free AI Info Remover <br/>
+          <span style={{ color: 'var(--color-primary)' }}>Clean Image Metadata Instantly.</span>
         </h1>
         <p style={{ fontSize: '18px', color: 'var(--color-text-muted)', maxWidth: '600px', margin: '0 auto' }}>
-          Strip EXIF, GPS, C2PA content credentials, and AI generation tags from your images entirely in your browser.
+          Fast, free, and 100% privacy-focused. Remove AI meta from images entirely in your browser—no uploads required.
         </p>
       </div>
 
@@ -209,9 +193,9 @@ export default function App() {
         </h2>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
           {[
-            { step: '1', title: 'Upload Your Image', desc: 'Drag & drop or click to select any JPEG, PNG, or WebP image. Your file stays on your device — nothing is uploaded.' },
-            { step: '2', title: 'Click "Remove Metadata"', desc: 'npmeta strips all AI tags, C2PA content credentials, EXIF data, GPS coordinates, XMP metadata, and software identification.' },
-            { step: '3', title: 'Download Your Clean Image', desc: 'Get a metadata-free image ready to share on Instagram, Facebook, Twitter, or any platform without triggering AI labels.' }
+            { step: '1', title: 'Select Your Image', desc: 'Choose a photo to clean image metadata. Our AI info remover works entirely on your device for total privacy—no server uploads.' },
+            { step: '2', title: 'Process Instantly', desc: 'Click to quickly remove AI meta from image files. We strip EXIF, C2PA, and hidden AI tags in milliseconds.' },
+            { step: '3', title: 'Download Securely', desc: 'Save your completely clean image, free of tracking data and "Made with AI" labels, ready to share safely.' }
           ].map((item) => (
             <div key={item.step} style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
               <div style={{ 
@@ -334,7 +318,7 @@ export default function App() {
       
       {/* Footer */}
       <footer style={{ backgroundColor: '#ffffff', borderTop: '1px solid var(--color-border)', padding: '32px', textAlign: 'center', color: 'var(--color-text-muted)', marginTop: 'auto' }}>
-        <p>© {new Date().getFullYear()} npmeta Suite. Privacy-first image tools.</p>
+        <p>© {new Date().getFullYear()} npmeta Suite. Privacy-first image tools. <a href="/blog/" style={{ color: 'var(--color-primary)', textDecoration: 'none', marginLeft: '16px', fontWeight: 500 }}>Read our Blog</a></p>
       </footer>
     </div>
   );

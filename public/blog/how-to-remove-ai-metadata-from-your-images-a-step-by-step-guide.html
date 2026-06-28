@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Remove AI Metadata from Your Images: A Step-by-Step Guide | npmeta Blog</title>
+  <meta name="description" content="Learn how to easily remove AI metadata, C2PA content credentials, and EXIF tags from your images using npmeta's free client-side tool.">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-bg: #f9fafb;
+      --color-surface: #ffffff;
+      --color-text: #111827;
+      --color-text-muted: #4b5563;
+      --color-primary: #3b82f6;
+      --color-border: #e5e7eb;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --color-bg: #111827;
+        --color-surface: #1f2937;
+        --color-text: #f9fafb;
+        --color-text-muted: #9ca3af;
+        --color-border: #374151;
+      }
+    }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, sans-serif;
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+    }
+    .header {
+      background-color: var(--color-surface);
+      border-bottom: 1px solid var(--color-border);
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: 800;
+      text-decoration: none;
+      color: var(--color-text);
+    }
+    .nav-links a {
+      color: var(--color-text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      margin-left: 20px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 24px;
+    }
+    .article-header {
+      margin-bottom: 40px;
+    }
+    h1 {
+      font-size: 36px;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .meta {
+      color: var(--color-text-muted);
+      font-size: 14px;
+    }
+    .content h2 {
+      font-size: 24px;
+      margin-top: 40px;
+      margin-bottom: 16px;
+    }
+    .content p {
+      margin-bottom: 24px;
+      font-size: 18px;
+    }
+    .content ul, .content ol {
+      margin-bottom: 24px;
+      font-size: 18px;
+      padding-left: 24px;
+    }
+    .content li {
+      margin-bottom: 12px;
+    }
+    .cta {
+      margin-top: 48px;
+      padding: 32px;
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      text-align: center;
+    }
+    .cta a {
+      display: inline-block;
+      background-color: var(--color-primary);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 16px;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <a href="/" class="logo">npmeta</a>
+    <nav class="nav-links">
+      <a href="/blog/">Blog</a>
+      <a href="/">Tools</a>
+    </nav>
+  </header>
+  <main class="container">
+    <article>
+      <header class="article-header">
+        <h1>How to Remove AI Metadata from Your Images: A Step-by-Step Guide</h1>
+        <div class="meta">Published on <time datetime="2026-06-28">June 28, 2026</time> • 4 min read</div>
+      </header>
+      <div class="content">
+        <p>If you have recently edited a photo using Adobe Photoshop's Generative Fill, or created an image using tools like Midjourney or DALL-E, your image file is likely carrying a heavy payload of AI metadata. Social media algorithms scan for this specific metadata—most commonly known as C2PA content credentials—and automatically apply "Made with AI" labels to your posts.</p>
+        
+        <p>If you want to maintain full control over how your art or photography is perceived online, removing this AI metadata is essential. Here is a comprehensive step-by-step guide on how to scrub AI tags from your images quickly and safely using npmeta.</p>
+
+        <h2>Step 1: Understand What You Are Removing</h2>
+        <p>Before you begin, it is helpful to know what exactly is embedded in your file. AI metadata usually takes the form of:</p>
+        <ul>
+          <li><strong>C2PA Data:</strong> An open standard designed to trace the provenance of digital media. It links the image to the software or AI model that generated it.</li>
+          <li><strong>XMP Tags:</strong> Extensible Metadata Platform tags (developed by Adobe) that record the exact prompts or AI tools used during the editing process.</li>
+          <li><strong>IPTC and EXIF:</strong> Standard metadata fields that can be repurposed to store AI generation signatures.</li>
+        </ul>
+
+        <h2>Step 2: Choose a Client-Side Tool</h2>
+        <p>The safest way to remove metadata is by using a tool that operates entirely on your own device. Avoid uploading your original, unedited photos to random online converters. <strong>npmeta</strong> operates 100% in your web browser utilizing HTML5 Canvas, ensuring your image is never uploaded to any remote server.</p>
+
+        <h2>Step 3: Upload and Scrub Your Image</h2>
+        <ol>
+          <li>Navigate to the homepage of <strong>npmeta.com</strong>.</li>
+          <li>Locate the <strong>MetaCleaner</strong> drop-zone.</li>
+          <li>Drag and drop your AI-generated or AI-edited image (JPEG, PNG, or WebP) into the upload area.</li>
+          <li>Click the prominent <strong>"Remove Metadata"</strong> button.</li>
+        </ol>
+        <p>Behind the scenes, npmeta instantly loads your image into a local canvas element and re-encodes the pixel data. This process effectively strips away all headers containing EXIF, XMP, IPTC, and C2PA credentials, while leaving the visual quality of the image intact.</p>
+
+        <h2>Step 4: Download and Verify</h2>
+        <p>Once the processing is complete (which usually takes just milliseconds), click the download button to save the sanitized file to your device. The downloaded image is now completely free of AI metadata.</p>
+        <p>To verify the process worked, you can upload the new image to npmeta's <strong>Content Credentials Checker</strong> or <strong>Privacy Analyzer</strong> tools to confirm that all AI tags have been successfully eradicated.</p>
+
+        <h2>Conclusion</h2>
+        <p>Managing your digital footprint shouldn't be difficult. By routinely stripping metadata before uploading to social networks, you prevent algorithms from misinterpreting your work and ensure your creative privacy remains intact.</p>
+      </div>
+      <div class="cta">
+        <h2>Ready to clean your images?</h2>
+        <p>Use npmeta's free suite of privacy tools to remove AI tags, EXIF data, and tracking metadata instantly in your browser.</p>
+        <a href="/">Try npmeta Free</a>
+      </div>
+    </article>
+  </main>
+</body>
+</html>

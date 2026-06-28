@@ -58,7 +58,7 @@ export default function DocConverter() {
       setStatus('done');
     } catch (error) {
       console.error(error);
-      alert('Conversion failed. Check console or API key.');
+      alert('Service is currently unavailable or the daily conversion limit has been reached. Please try again later.');
       setStatus('error');
     }
   };

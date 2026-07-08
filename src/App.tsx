@@ -279,6 +279,7 @@ export default function App() {
         
         <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
           <nav style={{ display: 'flex', gap: '20px', fontWeight: 500, color: 'var(--color-text-muted)' }} className="desktop-nav">
+            <a href="/blog/" style={{ color: 'inherit', textDecoration: 'none' }}>Blog</a>
             <button onClick={() => navigateTo('how-it-works')} style={{ color: currentView === 'how-it-works' ? 'var(--color-primary)' : 'inherit' }}>How it works</button>
             <button onClick={() => navigateTo('privacy')} style={{ color: currentView === 'privacy' ? 'var(--color-primary)' : 'inherit' }}>Privacy</button>
             <div style={{ position: 'relative' }}>

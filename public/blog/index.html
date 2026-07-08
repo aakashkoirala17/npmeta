@@ -10,22 +10,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --color-bg: #f9fafb;
+        :root {
+      --color-bg: #f5f5f0;
       --color-surface: #ffffff;
-      --color-text: #111827;
-      --color-text-muted: #4b5563;
-      --color-primary: #3b82f6;
-      --color-border: #e5e7eb;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --color-bg: #111827;
-        --color-surface: #1f2937;
-        --color-text: #f9fafb;
-        --color-text-muted: #9ca3af;
-        --color-border: #374151;
-      }
+      --color-text: #1a1a1a;
+      --color-text-muted: #666666;
+      --color-primary: #003893;
+      --color-accent: #DC143C;
+      --color-border: #e2e2e2;
     }
     body {
       margin: 0;
@@ -55,52 +47,92 @@
       margin-left: 20px;
     }
     .container {
-      max-width: 800px;
+      max-width: 720px;
       margin: 60px auto;
       padding: 0 24px;
     }
     .blog-header {
-      text-align: center;
+      text-align: left;
       margin-bottom: 64px;
     }
     .blog-header h1 {
-      font-size: 42px;
+      font-size: 48px;
       margin-bottom: 16px;
       font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #1a1a1a;
     }
     .blog-header p {
-      font-size: 18px;
+      font-size: 20px;
       color: var(--color-text-muted);
-      max-width: 600px;
-      margin: 0 auto;
+      line-height: 1.6;
+    }
+    .search-container {
+      margin-bottom: 48px;
+    }
+    .search-bar {
+      width: 100%;
+      padding: 16px 0;
+      font-size: 20px;
+      border: none;
+      border-bottom: 1px solid var(--color-border);
+      outline: none;
+      background: transparent;
+      transition: border-color 0.2s ease;
+      font-family: inherit;
+    }
+    .search-bar:focus {
+      border-bottom-color: var(--color-text);
+    }
+    .search-bar::placeholder {
+      color: #aaa;
+    }
+    .no-results {
+      color: var(--color-text-muted);
+      font-size: 18px;
+      display: none;
+      padding: 40px 0;
     }
     .article-list {
       display: flex;
       flex-direction: column;
-      gap: 24px;
     }
     .article-card {
-      background-color: var(--color-surface);
-      border: 1px solid var(--color-border);
-      border-radius: 12px;
-      padding: 24px;
+      display: block;
+      padding: 32px 0;
+      border-bottom: 1px solid var(--color-border);
       text-decoration: none;
       color: inherit;
-      transition: box-shadow 0.2s ease, transform 0.2s ease;
+      background: none;
     }
-    .article-card:hover {
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-      transform: translateY(-2px);
-      border-color: var(--color-primary);
+    .article-card:last-child {
+      border-bottom: none;
     }
     .article-card h2 {
-      font-size: 22px;
+      font-size: 24px;
+      font-weight: 800;
       margin: 0 0 8px 0;
-      color: var(--color-primary);
+      color: #1a1a1a;
+      line-height: 1.3;
     }
     .article-card p {
-      margin: 0;
+      font-size: 16px;
+      line-height: 1.5;
       color: var(--color-text-muted);
+      margin: 0 0 16px 0;
+      font-family: 'Georgia', serif;
+    }
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--color-text-muted);
+      font-weight: 400;
+    }
+    .article-meta span {
+      display: flex;
+      align-items: center;
     }
   </style>
 </head>
@@ -118,57 +150,158 @@
       <p>Guides, best practices, and insights on managing image metadata, protecting your privacy, and navigating AI content credentials.</p>
     </div>
     
-    <div class="article-list">
+    <div class="search-container">
+      <input type="search" id="blog-search" class="search-bar" placeholder="Search articles..." aria-label="Search blog articles" />
+    </div>
+
+    <div class="article-list" id="article-list">
+      <div id="no-results" class="no-results">No articles found matching your search.</div>
       <a href="/blog/top-features-of-npmeta-that-make-metadata-cleaning-easy.html" class="article-card">
         <h2>Top Features of npmeta That Make Metadata Cleaning Easy</h2>
         <p>Discover how npmeta simplifies image privacy. Explore our top features like 100% client-side processing and instant EXIF removal.</p>
+        <div class="article-meta">
+          <span>May 15, 2026</span>
+          <span>·</span>
+          <span>6 min read</span>
+          <span>·</span>
+          <span style="background: #f2f2f2; padding: 2px 8px; border-radius: 100px; font-size: 12px;">Privacy</span>
+        </div>
       </a>
       
       <a href="/blog/the-benefits-of-stripping-metadata-for-freelance-photographers.html" class="article-card">
         <h2>The Benefits of Stripping Metadata for Freelance Photographers</h2>
         <p>Learn why freelance photographers must strip metadata from their images to protect clients and secure exclusive locations.</p>
+        <div class="article-meta">
+          <span>Jun 25, 2026</span>
+          <span>·</span>
+          <span>3 min read</span>
+          <span>·</span>
+          <span style="background: #f2f2f2; padding: 2px 8px; border-radius: 100px; font-size: 12px;">Privacy</span>
+        </div>
       </a>
       
       <a href="/blog/simplify-image-privacy-with-npmeta-instant-metadata-removal-solution.html" class="article-card">
         <h2>Simplify Image Privacy with npmeta’s Instant Metadata Removal Solution</h2>
         <p>Discover how npmeta provides the easiest and most secure instant metadata removal solution directly in your browser.</p>
+        <div class="article-meta">
+          <span>Jun 28, 2026</span>
+          <span>·</span>
+          <span>5 min read</span>
+          <span>·</span>
+          <span style="background: #f2f2f2; padding: 2px 8px; border-radius: 100px; font-size: 12px;">Privacy</span>
+        </div>
       </a>
       
       <a href="/blog/how-to-remove-ai-metadata-from-your-images-a-step-by-step-guide.html" class="article-card">
         <h2>How to Remove AI Metadata from Your Images: A Step-by-Step Guide</h2>
         <p>Learn how to easily remove AI metadata, C2PA content credentials, and EXIF tags from your images using npmeta.</p>
+        <div class="article-meta">
+          <span>Jun 28, 2026</span>
+          <span>·</span>
+          <span>5 min read</span>
+          <span>·</span>
+          <span style="background: #f2f2f2; padding: 2px 8px; border-radius: 100px; font-size: 12px;">Privacy</span>
+        </div>
       </a>
       
       <a href="/blog/understanding-c2pa-content-credentials-and-privacy-risks.html" class="article-card">
         <h2>Understanding C2PA Content Credentials and Privacy Risks</h2>
         <p>Learn what C2PA content credentials are, how they track the provenance of AI images, and the potential privacy risks for creators.</p>
+        <div class="article-meta">
+          <span>Jun 25, 2026</span>
+          <span>·</span>
+          <span>5 min read</span>
+          <span>·</span>
+          <span style="background: #f2f2f2; padding: 2px 8px; border-radius: 100px; font-size: 12px;">Privacy</span>
+        </div>
       </a>
       
       <a href="/blog/how-to-use-npmeta-for-batch-metadata-cleanup-and-why-it-matters.html" class="article-card">
         <h2>How to Use npmeta for Batch Metadata Cleanup and Why It Matters</h2>
         <p>Discover why batch metadata cleanup is essential for photographers and web developers managing hundreds of assets.</p>
+        <div class="article-meta">
+          <span>May 30, 2026</span>
+          <span>·</span>
+          <span>5 min read</span>
+          <span>·</span>
+          <span style="background: #f2f2f2; padding: 2px 8px; border-radius: 100px; font-size: 12px;">Privacy</span>
+        </div>
       </a>
       
       <a href="/blog/why-protect-your-privacy-by-removing-image-metadata.html" class="article-card">
         <h2>Why Protect Your Privacy by Removing Image Metadata</h2>
         <p>Understand the severe privacy risks hidden in your image files and learn why removing image metadata is a necessary step.</p>
+        <div class="article-meta">
+          <span>Jun 5, 2026</span>
+          <span>·</span>
+          <span>7 min read</span>
+          <span>·</span>
+          <span style="background: #f2f2f2; padding: 2px 8px; border-radius: 100px; font-size: 12px;">Privacy</span>
+        </div>
       </a>
       
       <a href="/blog/best-practices-for-managing-ai-generated-image-data.html" class="article-card">
         <h2>Best Practices for Managing AI-Generated Image Data</h2>
         <p>Explore best practices for managing and cleaning AI-generated image data and C2PA credentials to maintain control over your content.</p>
+        <div class="article-meta">
+          <span>Jun 20, 2026</span>
+          <span>·</span>
+          <span>6 min read</span>
+          <span>·</span>
+          <span style="background: #f2f2f2; padding: 2px 8px; border-radius: 100px; font-size: 12px;">Privacy</span>
+        </div>
       </a>
       
       <a href="/blog/protect-your-content-the-importance-of-metadata-management-for-creators.html" class="article-card">
         <h2>Protect Your Content: The Importance of Metadata Management for Creators</h2>
         <p>Learn why content creators must manage their image metadata to protect their intellectual property and avoid algorithmic labels.</p>
+        <div class="article-meta">
+          <span>Jun 28, 2026</span>
+          <span>·</span>
+          <span>3 min read</span>
+          <span>·</span>
+          <span style="background: #f2f2f2; padding: 2px 8px; border-radius: 100px; font-size: 12px;">Privacy</span>
+        </div>
       </a>
       
       <a href="/blog/comparing-popular-metadata-removal-tools-which-is-best-for-you.html" class="article-card">
         <h2>Comparing Popular Metadata Removal Tools: Which Is Best for You?</h2>
         <p>Compare the best EXIF and AI metadata removal tools on the market. Find out why client-side processing makes npmeta the top choice.</p>
+        <div class="article-meta">
+          <span>Jun 12, 2026</span>
+          <span>·</span>
+          <span>5 min read</span>
+          <span>·</span>
+          <span style="background: #f2f2f2; padding: 2px 8px; border-radius: 100px; font-size: 12px;">Privacy</span>
+        </div>
       </a>
     </div>
   </main>
+  <script>
+    const searchInput = document.getElementById('blog-search');
+    const cards = document.querySelectorAll('.article-card');
+    const noResults = document.getElementById('no-results');
+
+    searchInput.addEventListener('input', (e) => {
+      const term = e.target.value.toLowerCase();
+      let hasVisibleCards = false;
+
+      cards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        if (text.includes(term)) {
+          card.style.display = 'block';
+          hasVisibleCards = true;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      if (!hasVisibleCards && term !== '') {
+        noResults.style.display = 'block';
+      } else {
+        noResults.style.display = 'none';
+      }
+    });
+  </script>
 </body>
 </html>

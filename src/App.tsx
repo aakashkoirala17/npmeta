@@ -95,8 +95,8 @@ export default function App() {
     <main style={{ flex: 1, padding: '48px 24px', maxWidth: '900px', margin: '0 auto', width: '100%' }}>
       <div style={{ textAlign: 'center', marginBottom: '48px' }} className="animate-fade-in">
         <h1 style={{ fontSize: '42px', fontWeight: 800, color: 'var(--color-secondary)', marginBottom: '16px', lineHeight: 1.2 }}>
-          Free AI Info Remover <br/>
-          <span style={{ color: 'var(--color-primary)' }}>Clean Image Metadata Instantly.</span>
+          AI meta data remover <br/>
+          <span style={{ color: 'var(--color-primary)' }}>AI info remover.</span>
         </h1>
         <p style={{ fontSize: '18px', color: 'var(--color-text-muted)', maxWidth: '600px', margin: '0 auto' }}>
           Fast, free, and 100% privacy-focused. Remove AI meta from images entirely in your browser—no uploads required.

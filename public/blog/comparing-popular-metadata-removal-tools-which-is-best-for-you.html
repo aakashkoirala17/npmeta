@@ -11,21 +11,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --color-bg: #f9fafb;
+      --color-bg: #ffffff;
       --color-surface: #ffffff;
-      --color-text: #111827;
-      --color-text-muted: #4b5563;
-      --color-primary: #3b82f6;
-      --color-border: #e5e7eb;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --color-bg: #111827;
-        --color-surface: #1f2937;
-        --color-text: #f9fafb;
-        --color-text-muted: #9ca3af;
-        --color-border: #374151;
-      }
+      --color-text: #000000;
+      --color-text-muted: #333333;
+      --color-primary: #0000ff;
+      --color-accent: #ff0000;
+      --color-border: #000000;
     }
     body {
       margin: 0;
@@ -36,7 +28,7 @@
     }
     .header {
       background-color: var(--color-surface);
-      border-bottom: 1px solid var(--color-border);
+      border-bottom: 2px solid var(--color-border);
       padding: 16px 24px;
       display: flex;
       justify-content: space-between;
@@ -46,13 +38,16 @@
       font-size: 24px;
       font-weight: 800;
       text-decoration: none;
-      color: var(--color-text);
+      color: var(--color-primary);
     }
     .nav-links a {
-      color: var(--color-text-muted);
+      color: var(--color-text);
       text-decoration: none;
       font-weight: 500;
       margin-left: 20px;
+    }
+    .nav-links a:hover {
+      color: var(--color-accent);
     }
     .container {
       max-width: 800px;
@@ -61,6 +56,8 @@
     }
     .article-header {
       margin-bottom: 40px;
+      border-bottom: 4px solid var(--color-accent);
+      padding-bottom: 16px;
     }
     h1 {
       font-size: 36px;
@@ -75,6 +72,7 @@
       font-size: 24px;
       margin-top: 40px;
       margin-bottom: 16px;
+      color: var(--color-primary);
     }
     .content p {
       margin-bottom: 24px;
@@ -92,19 +90,20 @@
       margin-top: 48px;
       padding: 32px;
       background-color: var(--color-surface);
-      border: 1px solid var(--color-border);
-      border-radius: 12px;
+      border: 2px solid var(--color-border);
       text-align: center;
     }
     .cta a {
       display: inline-block;
-      background-color: var(--color-primary);
+      background-color: var(--color-accent);
       color: white;
       padding: 12px 24px;
-      border-radius: 8px;
       text-decoration: none;
       font-weight: 600;
       margin-top: 16px;
+    }
+    .cta a:hover {
+      background-color: var(--color-primary);
     }
   </style>
 </head>

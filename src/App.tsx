@@ -16,8 +16,9 @@ import BatchExifEditor from './components/BatchExifEditor';
 import AiDetector from './components/AiDetector';
 import DocMetadataCleaner from './components/DocMetadataCleaner';
 import DocConverter from './components/DocConverter';
+import GeminiLogoRemover from './components/GeminiLogoRemover';
 
-type ViewState = 'home' | 'how-it-works' | 'privacy' | 'resizer' | 'converter' | 'analyzer' | 'credentials' | 'diff' | 'watermark' | 'exif' | 'aidetector' | 'doc-cleaner' | 'doc-converter';
+type ViewState = 'home' | 'how-it-works' | 'privacy' | 'resizer' | 'converter' | 'analyzer' | 'credentials' | 'diff' | 'watermark' | 'exif' | 'aidetector' | 'doc-cleaner' | 'doc-converter' | 'gemini';
 
 const faqItems = [
   {
@@ -298,6 +299,7 @@ export default function App() {
                     <button onClick={() => navigateTo('watermark')} style={{ display: 'block', width: '100%', textAlign: 'left', padding: '12px 24px', fontWeight: currentView === 'watermark' ? 600 : 400, color: currentView === 'watermark' ? 'var(--color-primary)' : 'var(--color-text-main)' }}>Invisible Watermark</button>
                     <button onClick={() => navigateTo('exif')} style={{ display: 'block', width: '100%', textAlign: 'left', padding: '12px 24px', fontWeight: currentView === 'exif' ? 600 : 400, color: currentView === 'exif' ? 'var(--color-primary)' : 'var(--color-text-main)' }}>Batch EXIF Editor</button>
                     <button onClick={() => navigateTo('aidetector')} style={{ display: 'block', width: '100%', textAlign: 'left', padding: '12px 24px', fontWeight: currentView === 'aidetector' ? 600 : 400, color: currentView === 'aidetector' ? 'var(--color-primary)' : 'var(--color-text-main)' }}>AI Image Detector</button>
+                    <button onClick={() => navigateTo('gemini')} style={{ display: 'block', width: '100%', textAlign: 'left', padding: '12px 24px', fontWeight: currentView === 'gemini' ? 600 : 400, color: currentView === 'gemini' ? 'var(--color-primary)' : 'var(--color-text-main)' }}>Gemini Logo Remover</button>
                     <div style={{ padding: '8px 24px', fontSize: '12px', fontWeight: 700, color: 'var(--color-text-muted)', textTransform: 'uppercase', letterSpacing: '0.5px', marginTop: '8px', borderTop: '1px solid var(--color-border)', paddingTop: '16px' }}>Document Tools</div>
                     <button onClick={() => navigateTo('doc-cleaner')} style={{ display: 'block', width: '100%', textAlign: 'left', padding: '12px 24px', fontWeight: currentView === 'doc-cleaner' ? 600 : 400, color: currentView === 'doc-cleaner' ? 'var(--color-primary)' : 'var(--color-text-main)' }}>Document Metadata Cleaner</button>
                     <button onClick={() => navigateTo('doc-converter')} style={{ display: 'block', width: '100%', textAlign: 'left', padding: '12px 24px', fontWeight: currentView === 'doc-converter' ? 600 : 400, color: currentView === 'doc-converter' ? 'var(--color-primary)' : 'var(--color-text-main)' }}>PDF / DOCX Converter</button>
@@ -321,6 +323,7 @@ export default function App() {
       {currentView === 'watermark' && <InvisibleWatermark />}
       {currentView === 'exif' && <BatchExifEditor />}
       {currentView === 'aidetector' && <AiDetector />}
+      {currentView === 'gemini' && <GeminiLogoRemover />}
       {currentView === 'doc-cleaner' && <DocMetadataCleaner />}
       {currentView === 'doc-converter' && <DocConverter />}
       
